@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
+import CompletedSection from './components/CompletedSection';
 import './App.css';
 
 class App extends Component {
@@ -17,7 +18,12 @@ class App extends Component {
   }
 
   onToggleCompletedList = () => {
-    // showCompleted
+    console.log('1' + this.state.showCompleted);
+    setTimeout( () => {
+      this.setState({'showCompleted': this.state.showCompleted ? false : true});  
+      console.log('2' + this.state.showCompleted);
+    }, 1000);
+   
   }
 
   onCreateNewItem = () => {
@@ -32,14 +38,19 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Header title="To Do List" onCreateNewItem={this.onCreateNewItem} />
-        {/* <header className="App-header">
-          New List <button onClick={this.onCreateNewItem} value="+" />
-        </header>
-        <body className="App-body">
-          
-        </body> */}
+      <div className="App" style={{display: 'flex', height: '100%'}}>
+        <div className="App-sidebar" style={{width: '20%', height: '100%', display: 'inline-block', backgroundColor: '#e2dfdb'}}>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+        </div>
+        <div className="App-content" style={{width: '80%', paddingLeft: '30px', paddingRight: '30px'}}>
+          <Header title="To Do List" onCreateNewItem={this.onCreateNewItem} />
+          <CompletedSection countCompleted="5" onToggleCompletedList={this.onToggleCompletedList} showCompleted={this.state.showCompleted}/>
+        </div>
       </div>
     );
   }
