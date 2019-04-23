@@ -15,6 +15,7 @@ class App extends Component {
   }
 
   onToggleListItem = () => {
+  
   }
 
   onToggleCompletedList = (e) => {
@@ -40,7 +41,7 @@ class App extends Component {
         </div>
         <div className="App-content" style={{width: '80%', paddingLeft: '30px', paddingRight: '30px'}}>
           <Header title="To Do List" onCreateNewItem={this.onCreateNewItem} />
-          <CompletedSection countCompleted="5" onToggleCompletedList={this.onToggleCompletedList} showCompleted={this.state.showCompleted}/>
+          <CompletedSection countCompleted="5" onToggleCompletedList={this.onToggleCompletedList} state={this.state}/>
         </div>
       </div>
     );
