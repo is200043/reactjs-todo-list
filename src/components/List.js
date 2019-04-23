@@ -11,7 +11,7 @@ class List extends React.Component {
                 dom.push(<ListItem title={list[i].title} isCompleted={list[i].isCompleted} id={'checkbox' + i}/>);
             }
         }
-        return dom
+        return dom;
       }
 
     render() {
