@@ -14,13 +14,21 @@ class App extends Component {
     showCompleted: false};
   }
 
-  onToggleListItem = () => {
-  
+  onToggleListItem = (title, isCompleted, event) => {
+    let list = this.state.list;
+    for (let i = 0; i < list.length; i++) {
+      if(list[i].title === title){
+        console.log(' 5555 ' + title);
+        list[i].isCompleted = !isCompleted;
+      }
+    }
+    this.setState = {"list": list};
+    this.forceUpdate();
   }
 
-  onToggleCompletedList = (e) => {
+  onToggleCompletedList = (event) => {
     this.setState({'showCompleted': this.state.showCompleted ? false : true});  
-    e.preventDefault();
+    event.preventDefault();
   }
 
   onCreateNewItem = () => {
@@ -41,7 +49,7 @@ class App extends Component {
         </div>
         <div className="App-content" style={{width: '80%', paddingLeft: '30px', paddingRight: '30px'}}>
           <Header title="To Do List" onCreateNewItem={this.onCreateNewItem} />
-          <CompletedSection onToggleCompletedList={this.onToggleCompletedList} state={this.state}/>
+          <CompletedSection onToggleCompletedList={this.onToggleCompletedList} state={this.state} onToggleListItem={this.onToggleListItem}/>
         </div>
       </div>
     );

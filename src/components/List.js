@@ -8,11 +8,11 @@ class List extends React.Component {
         let list = this.props.state.list;
         for (let i = 0; i < list.length; i++) {
             if(list[i].isCompleted === isCompleted){
-                dom.push(<ListItem title={list[i].title} isCompleted={list[i].isCompleted} id={'checkbox' + i}/>);
+                dom.push(<ListItem title={list[i].title} isCompleted={list[i].isCompleted} id={'checkbox' + i} onToggleListItem={this.props.onToggleListItem}/>);
             }
-        }
+        }    
         return dom;
-      }
+    }
 
     render() {
         return (
