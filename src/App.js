@@ -17,13 +17,9 @@ class App extends Component {
   onToggleListItem = () => {
   }
 
-  onToggleCompletedList = () => {
-    console.log('1' + this.state.showCompleted);
-    setTimeout( () => {
-      this.setState({'showCompleted': this.state.showCompleted ? false : true});  
-      console.log('2' + this.state.showCompleted);
-    }, 1000);
-   
+  onToggleCompletedList = (e) => {
+    this.setState({'showCompleted': this.state.showCompleted ? false : true});  
+    e.preventDefault();
   }
 
   onCreateNewItem = () => {
@@ -40,12 +36,7 @@ class App extends Component {
     return (
       <div className="App" style={{display: 'flex', height: '100%'}}>
         <div className="App-sidebar" style={{width: '20%', height: '100%', display: 'inline-block', backgroundColor: '#e2dfdb'}}>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
+         
         </div>
         <div className="App-content" style={{width: '80%', paddingLeft: '30px', paddingRight: '30px'}}>
           <Header title="To Do List" onCreateNewItem={this.onCreateNewItem} />
