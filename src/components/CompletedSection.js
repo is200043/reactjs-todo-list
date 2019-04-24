@@ -6,11 +6,12 @@ class CompletedSection extends React.Component {
     countCompletedList = () => {
         var countCompletedList = 0;
         let list = this.props.state.list;
-        for (let i = 0; i < list.length; i++) {
-          if(list[i].isCompleted === true){
-            countCompletedList++;
-          }
-        }
+        list.map((item) => {
+            if (item.isCompleted  === true) {
+               countCompletedList++;
+            }
+            return countCompletedList;
+        });
         return countCompletedList;
     }
     

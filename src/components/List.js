@@ -4,20 +4,19 @@ import ListItem from './ListItem';
 class List extends React.Component {
 
     createList = (isCompleted) => {
-        console.log(isCompleted);
         let dom = [];
         let list = this.props.state.list;
-        for (let i = 0; i < list.length; i++) {
-            if(list[i].isCompleted === isCompleted){
+        list.map((item) => {
+            if (item.isCompleted  === isCompleted) {
                 dom.push(
-                <ListItem data={list[i]} 
-                    onToggleListItem={this.props.onToggleListItem}
-                    onEditTask={this.props.onEditTask} 
-                    onDeleteTask={this.props.onDeleteTask} />
+                    <ListItem data={item} 
+                        onToggleListItem={this.props.onToggleListItem}
+                        onEditTask={this.props.onEditTask} 
+                        onDeleteTask={this.props.onDeleteTask} />
                 );
             }
-        }    
-        console.log(dom);
+            return dom;
+        });
         return dom;
     }
 

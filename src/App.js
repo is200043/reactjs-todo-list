@@ -16,7 +16,7 @@ class App extends Component {
 
   onToggleListItem = (event) => {
     let list = this.state.list;
-    let data = list.find((item) => item.id == event.target.value);
+    let data = list.find((item) => item.id === parseInt(event.target.value));
     data.isCompleted = !data.isCompleted;
     this.setState({"list": list});
   }
@@ -29,11 +29,11 @@ class App extends Component {
   onCreateNewItem = () => {
     let list = this.state.list;
     let maxId = 1;
-    for (let i = 0; i < list.length; i++) {
-      if(list[i].id > maxId){
-         maxId = list[i].id;
+    list.map((item) => {
+      if (item.id > maxId) {
+        return maxId = item.id;
       }
-    }
+    });
     let obj = {};
     obj['id'] = maxId + 1;
     obj['title'] = 'new Task';
@@ -44,14 +44,14 @@ class App extends Component {
 
   onEditTask = (event, id) => {
     let list = this.state.list;
-    let data = list.find((item) => item.id == id);
+    let data = list.find((item) => item.id === id);
     data.title = event.target.value;
     this.setState({"list": list});
   }
 
   onDeleteTask = (event, id) => {
     let list = this.state.list;
-    let newList = list.filter((item) => item.id != id);
+    let newList = list.filter((item) => item.id !== id);
     this.setState({"list": newList});
   }
 
