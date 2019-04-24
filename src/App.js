@@ -49,7 +49,10 @@ class App extends Component {
     this.setState({"list": list});
   }
 
-  onDeleteTask = () => {
+  onDeleteTask = (event, id) => {
+    let list = this.state.list;
+    let newList = list.filter((item) => item.id != id);
+    this.setState({"list": newList});
   }
 
   render() {
@@ -60,7 +63,10 @@ class App extends Component {
         </div>
         <div className="App-content" style={{width: '80%', paddingLeft: '30px', paddingRight: '30px'}}>
           <Header title="To Do List" onCreateNewItem={this.onCreateNewItem} />
-          <CompletedSection onToggleCompletedList={this.onToggleCompletedList} state={this.state} onToggleListItem={this.onToggleListItem} onEditTask={this.onEditTask}/>
+          <CompletedSection onToggleCompletedList={this.onToggleCompletedList} state={this.state} 
+            onToggleListItem={this.onToggleListItem} 
+            onEditTask={this.onEditTask}
+            onDeleteTask={this.onDeleteTask} />
         </div>
       </div>
     );

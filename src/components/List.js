@@ -10,10 +10,10 @@ class List extends React.Component {
         for (let i = 0; i < list.length; i++) {
             if(list[i].isCompleted === isCompleted){
                 dom.push(
-                <ListItem 
-                data={list[i]} 
-                onToggleListItem={this.props.onToggleListItem}
-                onEditTask={this.props.onEditTask} />
+                <ListItem data={list[i]} 
+                    onToggleListItem={this.props.onToggleListItem}
+                    onEditTask={this.props.onEditTask} 
+                    onDeleteTask={this.props.onDeleteTask} />
                 );
             }
         }    
