@@ -38,12 +38,15 @@ class App extends Component {
     obj['id'] = maxId + 1;
     obj['title'] = 'new Task';
     obj['isCompleted'] = false;
-    console.log(obj);
     list.push(obj);
     this.setState({"list": list});
   }
 
-  onEditTask = () => {
+  onEditTask = (event, id) => {
+    let list = this.state.list;
+    let data = list.find((item) => item.id == id);
+    data.title = event.target.value;
+    this.setState({"list": list});
   }
 
   onDeleteTask = () => {
@@ -57,7 +60,7 @@ class App extends Component {
         </div>
         <div className="App-content" style={{width: '80%', paddingLeft: '30px', paddingRight: '30px'}}>
           <Header title="To Do List" onCreateNewItem={this.onCreateNewItem} />
-          <CompletedSection onToggleCompletedList={this.onToggleCompletedList} state={this.state} onToggleListItem={this.onToggleListItem}/>
+          <CompletedSection onToggleCompletedList={this.onToggleCompletedList} state={this.state} onToggleListItem={this.onToggleListItem} onEditTask={this.onEditTask}/>
         </div>
       </div>
     );

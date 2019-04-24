@@ -12,7 +12,8 @@ class List extends React.Component {
                 dom.push(
                 <ListItem 
                 data={list[i]} 
-                onToggleListItem={this.props.onToggleListItem}/>
+                onToggleListItem={this.props.onToggleListItem}
+                onEditTask={this.props.onEditTask} />
                 );
             }
         }    

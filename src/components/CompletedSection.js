@@ -27,9 +27,9 @@ class CompletedSection extends React.Component {
                         </div>
                     </div>
                     <hr/>
-                    <List state={this.props.state} listCompleted={true} listShow={this.props.state.showCompleted} onToggleListItem={this.props.onToggleListItem}/>
+                    <List state={this.props.state} listCompleted={true} listShow={this.props.state.showCompleted} onToggleListItem={this.props.onToggleListItem} onEditTask={this.props.onEditTask} />
                 </div>
-                <List state={this.props.state} listCompleted={false} onToggleListItem={this.props.onToggleListItem}/>
+                <List state={this.props.state} listCompleted={false} onToggleListItem={this.props.onToggleListItem} onEditTask={this.props.onEditTask} />
             </div>
            
         );
