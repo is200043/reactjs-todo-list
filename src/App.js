@@ -15,15 +15,26 @@ class App extends Component {
   }
 
   onToggleListItem = (title, isCompleted, event) => {
-    let list = this.state.list;
-    for (let i = 0; i < list.length; i++) {
-      if(list[i].title === title){
-        console.log(' 5555 ' + title);
-        list[i].isCompleted = !isCompleted;
+    new Promise((resolve, reject) => {
+      try {
+        let list = this.state.list;
+        for (let i = 0; i < list.length; i++) {
+          if(list[i].title === title){
+            console.log(' 5555 ' + title);
+            list[i].isCompleted = !isCompleted;
+          }
+        }
+        this.setState({"list": list});
+        resolve('success');
+      } catch (error) {
+        reject(error);
       }
-    }
-    this.setState = {"list": list};
-    this.forceUpdate();
+    }).then((text) => {
+      console.log(text);
+      this.forceUpdate();
+    }).catch((error) => {
+      console.log(error.message);
+    });
   }
 
   onToggleCompletedList = (event) => {
@@ -32,7 +43,13 @@ class App extends Component {
   }
 
   onCreateNewItem = () => {
-    console.log('Create');
+    let list = this.state.list;
+    let obj = {};
+    obj['title'] = 'new Task';
+    obj['isCompleted'] = false;
+    list.push(obj);
+    this.setState({"list": list});
+    this.forceUpdate();
   }
 
   onEditTask = () => {
