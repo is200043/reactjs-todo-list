@@ -7,34 +7,18 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {list: [{title: 'Task 1', isCompleted: true},
-      {title: 'Task 2', isCompleted: false},
-      {title: 'Task 3', isCompleted: false},
-      {title: 'Task 4', isCompleted: true}],
+    this.state = {list: [{id: 1, title: 'Task 1', isCompleted: true},
+      {id: 2, title: 'Task 2', isCompleted: false},
+      {id: 3, title: 'Task 3', isCompleted: false},
+      {id: 4, title: 'Task 4', isCompleted: true}],
     showCompleted: false};
   }
 
-  onToggleListItem = (title, isCompleted, event) => {
-    new Promise((resolve, reject) => {
-      try {
-        let list = this.state.list;
-        for (let i = 0; i < list.length; i++) {
-          if(list[i].title === title){
-            console.log(' 5555 ' + title);
-            list[i].isCompleted = !isCompleted;
-          }
-        }
-        this.setState({"list": list});
-        resolve('success');
-      } catch (error) {
-        reject(error);
-      }
-    }).then((text) => {
-      console.log(text);
-      this.forceUpdate();
-    }).catch((error) => {
-      console.log(error.message);
-    });
+  onToggleListItem = (event) => {
+    let list = this.state.list;
+    let data = list.find((item) => item.id == event.target.value);
+    data.isCompleted = !data.isCompleted;
+    this.setState({"list": list});
   }
 
   onToggleCompletedList = (event) => {
@@ -44,12 +28,19 @@ class App extends Component {
 
   onCreateNewItem = () => {
     let list = this.state.list;
+    let maxId = 1;
+    for (let i = 0; i < list.length; i++) {
+      if(list[i].id > maxId){
+         maxId = list[i].id;
+      }
+    }
     let obj = {};
+    obj['id'] = maxId + 1;
     obj['title'] = 'new Task';
     obj['isCompleted'] = false;
+    console.log(obj);
     list.push(obj);
     this.setState({"list": list});
-    this.forceUpdate();
   }
 
   onEditTask = () => {

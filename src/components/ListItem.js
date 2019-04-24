@@ -8,11 +8,11 @@ class ListItem extends React.Component {
             <div>
                 <div className="container">
                     <div className="round" style={{display: 'inline-block', margin: '0px 5px 0px 5px'}}>
-                        <input type="checkbox" id={this.props.id} defaultChecked={this.props.isCompleted} onChange={(e) => this.props.onToggleListItem(this.props.title, this.props.isCompleted, e)}/>
-                        <label for={this.props.id}></label>
+                        <input type="checkbox" id={this.props.data.id} checked={this.props.data.isCompleted} value={this.props.data.id} onChange={(e) => this.props.onToggleListItem(e)}/>
+                        <label for={this.props.data.id}></label>
                     </div>
                     <div style={{display: 'inline-block', margin: '0px 5px 0px 5px'}}>
-                            <span>{this.props.title}</span>
+                            <span>{this.props.data.title}</span>
                     </div>
                 </div>
                 <hr/>
