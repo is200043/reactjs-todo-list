@@ -7,11 +7,11 @@ class List extends React.Component {
         let dom = [];
         let list = this.props.state.list;
         list.map((item) => {
-            if (item.isCompleted  === isCompleted) {
+            if (item.isCompleted === isCompleted) {
                 dom.push(
-                    <ListItem data={item} 
+                    <ListItem data={item}
                         onToggleListItem={this.props.onToggleListItem}
-                        onEditTask={this.props.onEditTask} 
+                        onEditTask={this.props.onEditTask}
                         onDeleteTask={this.props.onDeleteTask} />
                 );
             }
@@ -22,7 +22,7 @@ class List extends React.Component {
 
     render() {
         return (
-            <div style={{display: this.props.listShow ? 'none': ''}}>
+            <div style={{ display: this.props.listShow ? 'none' : '' }}>
                 {this.createList(this.props.listCompleted)}
             </div>
         );
